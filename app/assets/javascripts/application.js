@@ -18,9 +18,4 @@
 //= require local-time
 //= require activestorage
 //= require turbolinks
-//= require ./vendor/d3.v3
-//= require ./vendor/angular.min
-//= require d3.architectureTree
-//= require ./angular.architectureTree/app
-//= require_tree ./angular.architectureTree
 //= require_tree .

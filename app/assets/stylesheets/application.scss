@@ -7,8 +7,6 @@
 @import "bootstrap";
 @import "sticky-footer";
 @import "announcements";
-@import "vendor/bootstrap.min";
-@import "tree";
 
 // Fixes bootstrap nav-brand container overlap
 @include media-breakpoint-down(xs) {
