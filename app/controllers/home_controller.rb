@@ -7,4 +7,7 @@ class HomeController < ApplicationController
 
   def privacy
   end
+
+  def tree
+  end
 end

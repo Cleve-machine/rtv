@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     end
   get '/privacy', to: 'home#privacy'
   get '/terms', to: 'home#terms'
+  get '/tree', to: 'home#tree'
   resources :notifications, only: [:index]
   resources :announcements, only: [:index]
   authenticate :user, lambda { |u| u.admin? } do
