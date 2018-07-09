@@ -9,15 +9,22 @@ d3.chart.architectureTree = function() {
     /**
      * Build the chart
      */
+    // size of the diagram
+    var viewerWidth = $(document).width()/2;
+    var viewerHeight = $(document).height()/0.5;
+
     function chart(){
         if (typeof(tree) === 'undefined') {
             tree = d3.layout.tree()
-                .size([360, diameter / 2 - 120])
-                .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
+                .size([viewerHeight, viewerWidth])
+                .separation(function(a, b) { return (a.parent == b.parent ? 1 : 1.5) / a.depth; });
 
             svg = d3.select("#graph").append("svg")
                 .attr("width", diameter)
                 .attr("height", diameter )
+                .call(d3.zoom().on("zoom", function () {
+                          svg.attr("transform", d3.event.transform)
+                  }))
                 .append("g")
                 .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
             $('#graph').css("border", "1px solid #eeeeee");
@@ -46,7 +53,6 @@ d3.chart.architectureTree = function() {
 
         var diagonal = d3.svg.diagonal()
             .projection(function(d) { return [d.y, d.x] });
-            // .projection(function(d) { return [d.y, d.x / 180 * Math.PI]; });
 
         var linkSelection = svg.selectAll(".link").data(links, function(d) {
             return d.source.name + d.target.name + Math.random();
@@ -65,7 +71,6 @@ d3.chart.architectureTree = function() {
         var node = nodeSelection.enter().append("g")
             .attr("class", "node")
             .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
-            // .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
             .on('mouseover', function(d) {
                 if(activeNode !== null) {
                     return;
@@ -100,14 +105,13 @@ d3.chart.architectureTree = function() {
             });
 
         node.append("text")
+            .attr("x", function(d) {  return d.children || d._children ? -10 : 10; })
             .attr("dy", ".31em")
-            // .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
-            // .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
+            .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
             .text(function(d) {
                 return d.name;
             });
     };
-
     /**
      * Add the node dependents in the tree
      * @param {Array} nodes
