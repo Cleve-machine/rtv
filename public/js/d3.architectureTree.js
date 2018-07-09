@@ -10,24 +10,27 @@ d3.chart.architectureTree = function() {
      * Build the chart
      */
     // size of the diagram
-    var viewerWidth = $(document).width()/2;
-    var viewerHeight = $(document).height()/0.5;
+    var viewerWidth = $(document).width();
+    var viewerHeight = $(document).height();
 
     function chart(){
+        var dragcontainer = d3.drag()
+          .on("drag", function(d, i) {
+            d3.select(this).attr("transform", "translate(" + (d.x = d3.event.x) + "," + (d.y = d3.event.y) + ")");
+          });
+
         if (typeof(tree) === 'undefined') {
             tree = d3.layout.tree()
-                .size([viewerHeight, viewerWidth])
+                .size([viewerHeight, viewerWidth/2])
                 .separation(function(a, b) { return (a.parent == b.parent ? 1 : 1.5) / a.depth; });
 
-            svg = d3.select("#graph").append("svg")
+            svg = d3.select("#graph").append("svg").datum({x: 0, y: 0}).call(dragcontainer)
                 .attr("width", diameter)
                 .attr("height", diameter )
-                .call(d3.zoom().on("zoom", function () {
-                          svg.attr("transform", d3.event.transform)
-                  }))
                 .append("g")
-                .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
+                .attr("transform", "translate(" + diameter * 8 / 9 + "," + diameter / 9 + ")");
             $('#graph').css("border", "1px solid #eeeeee");
+            $('#graph').css("overflow", "hidden");
         }
 
         var nodes = tree.nodes(treeData),
