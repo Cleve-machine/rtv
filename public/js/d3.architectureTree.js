@@ -50,9 +50,9 @@ d3.chart.architectureTree = function() {
         nodes.map(function(node) {
             addIndex(node);
         });
-
+        
         var diagonal = d3.svg.diagonal()
-            .projection(function(d) { return [d.y, d.x] });
+            .projection(function(d) { return [d.y * (-1), d.x] });
 
         var linkSelection = svg.selectAll(".link").data(links, function(d) {
             return d.source.name + d.target.name + Math.random();
@@ -70,7 +70,7 @@ d3.chart.architectureTree = function() {
 
         var node = nodeSelection.enter().append("g")
             .attr("class", "node")
-            .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
+            .attr("transform", function(d) { return "translate(" + ( d.y * (-1)) + "," + d.x + ")"; })
             .on('mouseover', function(d) {
                 if(activeNode !== null) {
                     return;
@@ -105,9 +105,10 @@ d3.chart.architectureTree = function() {
             });
 
         node.append("text")
-            .attr("x", function(d) {  return d.children || d._children ? -10 : 10; })
+            .attr("x", function(d) {  
+                return d.children || d._children ? 10 : -10; })
             .attr("dy", ".31em")
-            .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+            .attr("text-anchor", function(d) { return d.children || d._children ? "start" : "end"; })
             .text(function(d) {
                 return d.name;
             });
