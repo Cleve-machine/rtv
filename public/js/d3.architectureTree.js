@@ -20,6 +20,7 @@ d3.chart.architectureTree = function() {
                 .attr("height", diameter )
                 .append("g")
                 .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
+            $('#graph').css("border", "1px solid #eeeeee");
         }
 
         var nodes = tree.nodes(treeData),
@@ -43,8 +44,9 @@ d3.chart.architectureTree = function() {
             addIndex(node);
         });
 
-        var diagonal = d3.svg.diagonal.radial()
-            .projection(function(d) { return [d.y, d.x / 180 * Math.PI]; });
+        var diagonal = d3.svg.diagonal()
+            .projection(function(d) { return [d.y, d.x] });
+            // .projection(function(d) { return [d.y, d.x / 180 * Math.PI]; });
 
         var linkSelection = svg.selectAll(".link").data(links, function(d) {
             return d.source.name + d.target.name + Math.random();
@@ -62,7 +64,8 @@ d3.chart.architectureTree = function() {
 
         var node = nodeSelection.enter().append("g")
             .attr("class", "node")
-            .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
+            .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
+            // .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
             .on('mouseover', function(d) {
                 if(activeNode !== null) {
                     return;
@@ -98,8 +101,8 @@ d3.chart.architectureTree = function() {
 
         node.append("text")
             .attr("dy", ".31em")
-            .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
-            .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
+            // .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
+            // .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
             .text(function(d) {
                 return d.name;
             });
