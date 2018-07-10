@@ -1,35 +1,73 @@
+<style type="text/css">
+div .list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+div > input {
+    width: 45px;
+}
+
+#datepicker {
+    width: 100%;
+}
+textarea {
+    width: 90%;
+}
+</style>
 <form name="editForm" ng-submit="editNode(editForm, $event)">
     <div class="details panel panel-info">
         <div class="panel-heading">
             <input type="text" ng-model="node.name" class="form-control"/>
         </div>
         <div class="panel-body">
-            <div class="url">
-                <h5>Url</h5>
-                <input type="text" ng-model="node.url" class="form-control" init-focus />
-            </div>
-
-            <div class="comments">
-                <h5>Comments</h5>
-                <textarea ng-model="node.comments" class="form-control" init-focus></textarea>
-            </div>
-
             <div class="properties edit">
+                
+                    <div class="list goal" >
+                        <div class="label-1"><h5>%Contribution to Goal:</h5></div>
+                        <div class="content"><input type="number" placeholder="0.00" step=".01" ng-model = "goal"/><span>%</span></div>
+                    </div>
+                    <div class="list time" >
+                        <div class="label-2"><h5>Time Allocated: </h5></div>
+                        <div class="content"><input type="number" ng-model = "time"/><span>days</span></div>
+                    </div>
+                    <div class="list confidence" >
+                        <div class="label-3"><h5>Project Confidence: </h5></div>
+                        <div class="content"><input type="text" ng-model = "confidence"/><span>%</span></div>
+                    </div>
+                    <div class="list measurement" >
+                        <div class="label-4"><h5>Measurement: </h5></div>
+                        <div class="content"><textarea maxlength="250"></textarea></div>
+                    </div>
+                    <div class="list acceptable" >
+                        <div class="label-5"></dir><h5>Results-Acceptable: </h5></div>
+                        <div class="content"><input type="number" placeholder="0.00" step=".01" ng-model = "acceptable"/></div>
+                    </div>
+                    <div class="list current" >
+                        <div class="label-6"><h5>Results-Current: </h5></div>
+                        <div class="content"><input type="number" placeholder="0.00" step=".01" ng-model = current""/></div>
+                    </div>
+                    <div class="list fail" >
+                        <div class="label-7"><h5>Results-Fail: </h5></div>
+                        <div class="content"><input type="number" placeholder="0.00" step=".01" ng-model = "fail"/></div>
+                    </div>
+                    <div class="list target" >
+                        <div class="label-8"><h5>Results-Target: </h5></div>
+                        <div class="content"><input type="number" placeholder="0.00" step=".01" ng-model = "target"/></div>
+                    </div>
+                    <div class="list date" >
+                        <div class="label-9"><h5>Due Date: </h5></div>
+                        <div class="content"><input type="date" id="datepicker" ng-model="date"/></div>
+                    </div>
+                
+                
                 <h5>Depends on <span class="glyphicon glyphicon-plus" ng-click="addDependency()"></span></h5>
                 <ul>
                     <li ng-repeat="dependencies in node.dependsOn track by $index">
                         <input type="text" ng-model="node.dependsOn[$index]" init-focus /> <span class="remove glyphicon glyphicon-remove" ng-click="deleteDependency($index)"></span>
                     </li>
                 </ul>
-
-                <h5>Technos <span class="glyphicon glyphicon-plus" ng-click="addTechno()"></span></h5>
-                <ul>
-                    <li ng-repeat="techno in node.technos track by $index">
-                        <input type="text" ng-model="node.technos[$index]" init-focus />  <span class="remove glyphicon glyphicon-remove" ng-click="deleteTechno($index)"></span>
-                    </li>
-                </ul>
-
-                <h5>Hosts <span class="glyphicon glyphicon-plus" ng-click="addHostCategory()"></span></h5>
+                <h5>Accountable Person: <span class="glyphicon glyphicon-plus" ng-click="addHostCategory()"></span></h5>
                 <ul>
                     <li ng-repeat="(key, host) in node.host track by $index">
                         <input type="text" ng-model="hostKeys[key]" init-focus /><span class="glyphicon glyphicon-plus" ng-click="addHost(key)"></span>
@@ -44,6 +82,15 @@
                     </li>
                 </ul>
             </div>
+            <div class="url">
+                <h5>Information Sources</h5>
+                <input type="text" ng-model="node.url" class="form-control" init-focus />
+            </div>
+
+            <div class="comments">
+                <h5>Other Notes</h5>
+                <textarea ng-model="node.comments" class="form-control" init-focus></textarea>
+            </div>
         </div>
         <div class="panel-action">
             <button type="button" ng-click="addNode()" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Add</button>
@@ -56,3 +103,16 @@
         </div>
     </div>
 </form>
+<script type="text/javascript">
+$(document).ready(function () {
+    var date = new Date();
+    var currentMonth = date.getMonth();
+    var currentDate = date.getDate();
+    var currentYear = date.getFullYear();
+
+    $('#datepicker').datepicker({
+        minDate: new Date(currentYear, currentMonth, currentDate),
+        dateFormat: 'dd-mm-yy'
+    });
+});
+</script>
