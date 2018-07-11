@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
       root to: "users#index"
     end
-  get '/privacy', to: 'home#privacy'
-  get '/terms', to: 'home#terms'
-  get '/tree', to: 'home#tree'
+  get '/privacy', to: 'page#privacy'
+  get '/terms', to: 'page#terms'
+  get '/tree', to: 'page#tree'
   resources :notifications, only: [:index]
   resources :announcements, only: [:index]
   authenticate :user, lambda { |u| u.admin? } do
