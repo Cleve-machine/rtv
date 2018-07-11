@@ -45,7 +45,7 @@ textarea {
                     </div>
                     <div class="list current" >
                         <div class="label-6"><h5>Results-Current: </h5></div>
-                        <div class="content"><input type="number" placeholder="0.00" step=".01" ng-model = current""/></div>
+                        <div class="content"><input type="number" placeholder="0.00" step=".01" ng-model = "current"/></div>
                     </div>
                     <div class="list fail" >
                         <div class="label-7"><h5>Results-Fail: </h5></div>
@@ -103,16 +103,3 @@ textarea {
         </div>
     </div>
 </form>
-<script type="text/javascript">
-$(document).ready(function () {
-    var date = new Date();
-    var currentMonth = date.getMonth();
-    var currentDate = date.getDate();
-    var currentYear = date.getFullYear();
-
-    $('#datepicker').datepicker({
-        minDate: new Date(currentYear, currentMonth, currentDate),
-        dateFormat: 'dd-mm-yy'
-    });
-});
-</script>
