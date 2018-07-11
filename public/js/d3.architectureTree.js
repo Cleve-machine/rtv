@@ -12,11 +12,19 @@ d3.chart.architectureTree = function() {
     // size of the diagram
     var viewerWidth = $(document).width();
     var viewerHeight = $(document).height();
-
+    
     function chart(){
+        var startX = diameter * 8 / 9;
+        var startY = diameter / 9;
         var dragcontainer = d3.drag()
           .on("drag", function(d, i) {
-            d3.select(this).attr("transform", "translate(" + (d.x = d3.event.x) + "," + (d.y = d3.event.y) + ")");
+
+            d.x = d3.event.x + startX;
+            d.y = d3.event.y + startY;
+
+            d3.select('g').attr("transform", "translate(" + d.x + "," + d.y + ")");
+          }).on("end", function(d) {
+            startX = 0; startY = 0;
           });
 
         if (typeof(tree) === 'undefined') {
