@@ -4,3 +4,5 @@ angular.module('ChartsApp', [])
             console.log('data loaded');
         }, console.error);
     });
+
+var API_Base = 'http://localhost/test/test.php';
