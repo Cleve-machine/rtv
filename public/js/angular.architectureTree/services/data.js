@@ -13,10 +13,21 @@ angular.module('ChartsApp').service('data', function ($http, $q, bus) {
         if (typeof (jsonData) !== 'undefined') {
             return $q.when(jsonData);
         }
-
-        return $http.get("data.json").success(function(data) {
-            setJsonData(data);
-            return data;
+        var api_url = API_Base + 'api/get_tree';
+        return $http.get( api_url ).success(function(data) {
+            if( data != "null" ){
+                console.log( "from API" );
+                setJsonData(data);
+                return data;
+            }
+            else
+            {
+                return $http.get("data.json").success(function(data) {
+                    console.log("seeder from JSON");
+                    setJsonData(data);
+                    return data;
+                });
+            }
         });
     };
 
