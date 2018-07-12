@@ -25,39 +25,39 @@ textarea {
                 
                     <div class="list goal" >
                         <div class="label-1"><h5>%Contribution to Goal:</h5></div>
-                        <div class="content"><input type="number" placeholder="0.00" step=".01" ng-model = "goal"/><span>%</span></div>
+                        <div class="content"><input type="number" placeholder="0.00" step=".01" ng-model = "node.goal"/><span>%</span></div>
                     </div>
                     <div class="list time" >
                         <div class="label-2"><h5>Time Allocated: </h5></div>
-                        <div class="content"><input type="number" ng-model = "time"/><span>days</span></div>
+                        <div class="content"><input type="number" ng-model = "node.duration"/><span>days</span></div>
                     </div>
                     <div class="list confidence" >
                         <div class="label-3"><h5>Project Confidence: </h5></div>
-                        <div class="content"><input type="text" ng-model = "confidence"/><span>%</span></div>
+                        <div class="content"><input type="text" ng-model = "node.confidence"/><span>%</span></div>
                     </div>
                     <div class="list measurement" >
                         <div class="label-4"><h5>Measurement: </h5></div>
-                        <div class="content"><textarea maxlength="250"></textarea></div>
+                        <div class="content"><textarea maxlength="250" ng-model = "node.measurement"></textarea></div>
                     </div>
                     <div class="list acceptable" >
                         <div class="label-5"></dir><h5>Results-Acceptable: </h5></div>
-                        <div class="content"><input type="number" placeholder="0.00" step=".01" ng-model = "acceptable"/></div>
+                        <div class="content"><input type="number" placeholder="0.00" step=".01" ng-model = "node.acceptable"/></div>
                     </div>
                     <div class="list current" >
                         <div class="label-6"><h5>Results-Current: </h5></div>
-                        <div class="content"><input type="number" placeholder="0.00" step=".01" ng-model = "current"/></div>
+                        <div class="content"><input type="number" placeholder="0.00" step=".01" ng-model = "node.current"/></div>
                     </div>
                     <div class="list fail" >
                         <div class="label-7"><h5>Results-Fail: </h5></div>
-                        <div class="content"><input type="number" placeholder="0.00" step=".01" ng-model = "fail"/></div>
+                        <div class="content"><input type="number" placeholder="0.00" step=".01" ng-model = "node.fail"/></div>
                     </div>
                     <div class="list target" >
                         <div class="label-8"><h5>Results-Target: </h5></div>
-                        <div class="content"><input type="number" placeholder="0.00" step=".01" ng-model = "target"/></div>
+                        <div class="content"><input type="number" placeholder="0.00" step=".01" ng-model = "node.target"/></div>
                     </div>
                     <div class="list date" >
                         <div class="label-9"><h5>Due Date: </h5></div>
-                        <div class="content"><input type="date" id="datepicker" ng-model="date"/></div>
+                        <div class="content"><input type="date" id="datepicker" ng-model="node.duedate"/></div>
                     </div>
                 
                 
