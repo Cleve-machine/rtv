@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   get '/terms', to: 'page#terms'
   get '/tree', to: 'page#tree'
   get '/api/get_tree', to: 'api#getTree'
-  get '/api/save_tree', to: 'api#saveTree'
+  post '/api/save_tree', to: 'api#saveTree', via: [:post]
+  #match '/api/save_tree' => 'api#saveTree', via: [:get, :post]
 
   resources :notifications, only: [:index]
   resources :announcements, only: [:index]
