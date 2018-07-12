@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   get '/privacy', to: 'page#privacy'
   get '/terms', to: 'page#terms'
   get '/tree', to: 'page#tree'
+  get '/api/get_tree', to: 'api#getTree'
+  get '/api/save_tree', to: 'api#saveTree'
+
   resources :notifications, only: [:index]
   resources :announcements, only: [:index]
   authenticate :user, lambda { |u| u.admin? } do

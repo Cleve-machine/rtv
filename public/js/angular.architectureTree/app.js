@@ -5,4 +5,4 @@ angular.module('ChartsApp', [])
         }, console.error);
     });
 
-var API_Base = 'http://localhost/test/test.php';
+var API_Base = '/';
