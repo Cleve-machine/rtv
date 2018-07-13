@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
   get '/privacy', to: 'page#privacy'
   get '/terms', to: 'page#terms'
-  get '/tree', to: 'page#tree'
+  get '/tree', to: 'home#tree'
   get '/api/get_tree', to: 'api#getTree'
   post '/api/save_tree', to: 'api#saveTree', via: [:post]
   #match '/api/save_tree' => 'api#saveTree', via: [:get, :post]

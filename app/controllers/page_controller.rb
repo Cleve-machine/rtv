@@ -4,7 +4,4 @@ class PageController < ApplicationController
 
   def privacy
   end
-
-  def tree
-  end
 end
