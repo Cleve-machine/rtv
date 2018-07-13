@@ -32,6 +32,8 @@
     top: 80px;
     right: 10px;
     width: 280px;
+    max-height: 80%;
+    overflow: scroll;
 }
 
 .details ul {

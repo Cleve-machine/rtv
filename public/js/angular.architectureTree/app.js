@@ -5,4 +5,4 @@ angular.module('ChartsApp', [])
         }, console.error);
     });
 
-var API_Base = '/';
+var API_Base = 'http://0.0.0.0:3000/';
