@@ -6,18 +6,25 @@ angular.module('ChartsApp').controller('chartCtrl', function ($scope, $http, bus
     });
 
     $scope.$watch('data', function() {
-		var jsonData = JSON.stringify( $scope.data )
-		var requestData = { data : encodeURIComponent(jsonData) };
-		var header = { headers : {'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'}}
 		var token = $('#authenticity_token').val();
+    	$scope.data.authenticity_token = token;
+
+		var jsonData = JSON.stringify( $scope.data )
+		var requestData = { data : jsonData };
+		var header = { headers : {'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'}}
 		var api_url = API_Base + 'api/save_tree';
-		// var api_url = API_Base + '/api/save_tree?authenticity_token=' + token;
-		// var api_url = API_Base + 'api/save_tree?data=' + encodeURIComponent(jsonData);
 	
-		$http.post( api_url, requestData, header )
-            .success(function( data, status, headers, config){
-                console.log( data );
-            })
+		var request = $http({
+            method: "post",
+            url: api_url,
+            data: requestData
+        });
+        // Store the data-dump of the FORM scope.
+        request.success(
+            function( res ) {
+                console.log( res );
+            }
+        );
 	});
 
 });
