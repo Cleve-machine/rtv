@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   get '/tree', to: 'home#tree'
   get '/api/get_tree', to: 'api#getTree'
   post '/api/save_tree', to: 'api#saveTree', via: [:post]
-  #match '/api/save_tree' => 'api#saveTree', via: [:get, :post]
+
+  get '/api/get_treename', to: 'api#getTreeName'
+  post '/api/save_treename', to: 'api#setTreeName', via: [:post]  
 
   resources :notifications, only: [:index]
   resources :announcements, only: [:index]
