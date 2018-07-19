@@ -49,5 +49,75 @@
             </ul>
         </div>
 
+        <div class="properties" ng-if="node.goal">
+            <h5>%Contribution to Goal</h5>
+            <ul>
+                <li>{{ node.goal }} %</li>
+            </ul>
+        </div>
+
+        <div class="properties" ng-if="node.duration">
+            <h5>Time Allocated</h5>
+            <ul>
+                <li>{{ node.duration }} days</li>
+            </ul>
+        </div>
+
+        <div class="properties" ng-if="node.confidence">
+            <h5>Project Confidence</h5>
+            <ul>
+                <li>{{ node.confidence }} %</li>
+            </ul>
+        </div>
+
+        <div class="properties" ng-if="node.measurement">
+            <h5>Measurement</h5>
+            <ul>
+                <li>{{ node.measurement }}</li>
+            </ul>
+        </div>
+
+        <div class="properties" ng-if="node.acceptable">
+            <h5>Results-Acceptable</h5>
+            <ul>
+                <li>{{ node.acceptable }}</li>
+            </ul>
+        </div>
+
+        <div class="properties" ng-if="node.current">
+            <h5>Results-Current</h5>
+            <ul>
+                <li>{{ node.current }}</li>
+            </ul>
+        </div>
+
+        <div class="properties" ng-if="node.fail">
+            <h5>Results-Fail</h5>
+            <ul>
+                <li>{{ node.fail }}</li>
+            </ul>
+        </div>
+
+        <div class="properties" ng-if="node.target">
+            <h5>Results-Target</h5>
+            <ul>
+                <li>{{ node.target }}</li>
+            </ul>
+        </div>
+
+        <div class="properties" ng-if="node.duedate">
+            <h5>Due Date</h5>
+            <ul>
+                <li>{{ node.duedate }}</li>
+            </ul>
+        </div>
+
+        <div class="properties" ng-if="node.url">
+            <h5>Information Sources</h5>
+            <ul>
+                <li>{{ node.url }}</li>
+            </ul>
+        </div>
+
     </div>
 </div>

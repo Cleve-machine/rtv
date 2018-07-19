@@ -27,4 +27,21 @@ class ApiController < ApplicationController
 		render json: "parameter error"
   	end	
   end
+
+  def getTreeName
+  	@tree = current_user.tree.first
+  	if @tree 
+  		render json: @tree.tree_name
+  	else
+	  	render json: nil
+	end
+  end
+
+  def setTreeName
+  	tree_name = params[:tree_name]
+  	@tree = current_user.tree
+  	@tree.update( tree_name: tree_name)
+
+  	render json: "success"
+  end
 end

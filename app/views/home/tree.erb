@@ -6,19 +6,22 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/vendor/bootstrap.min.css" />
         <link rel="stylesheet" href="css/tree.css" />
+        <link rel="stylesheet" href="ng-inline-edit/dist/ng-inline-edit.min.css">
     </head>
     <body>
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <div class="container-fluid">
             <div ng-app="ChartsApp">
 
-                <h1 class="text-center">Architecture Tree</h1>
-
                 <div ng-controller="filterCtrl">
                     <ng-include src="'js/angular.architectureTree/templates/filter.html'"></ng-include>
                 </div>
 
                 <div ng-controller="chartCtrl">
+                    <h1 class="text-center" >
+                        <span inline-edit="treeName" inline-edit-on-click inline-edit-btn-edit=""></span>
+                    </h1>
+
                     <tree-chart data="data" diameter="960"></tree-chart>
                 </div>
 
@@ -37,9 +40,6 @@
                 <div ng-controller="undoCtrl">
                     <div ng-if="hasHistory()" class="json-upate-label bg-success">Updated JSON <a ng-click="undo()">(undo)</a></div>
                 </div>
-                <div ng-controller="jsonDataCtrl">
-                    <textarea id="json-data" class="form-control" ng-model="data" ng-blur="updateData()"></textarea>
-                </div>
             </div>
         </div>
         <script src="js/vendor/angular.min.js"></script>
@@ -55,5 +55,6 @@
         <script src="js/angular.architectureTree/directives/init-focus.js"></script>
         <script src="js/angular.architectureTree/services/data.js"></script>
         <script src="js/angular.architectureTree/services/bus.js"></script>
+        <script src="ng-inline-edit/dist/ng-inline-edit.min.js"></script>
     </body>
 </html>
