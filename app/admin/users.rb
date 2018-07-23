@@ -9,6 +9,7 @@ ActiveAdmin.register User do
     id_column
     column :email
     column :name
+    column :admin
     column :created_at
     actions
   end
