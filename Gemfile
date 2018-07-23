@@ -82,10 +82,8 @@ gem 'sitemap_generator', '~> 6.0', '>= 6.0.1'
 gem 'webpacker', '~> 3.5', '>= 3.5.3'
 gem 'whenever', require: false
 
-<<<<<<< HEAD
 gem 'execjs'
 gem 'therubyracer'
-=======
 
 gem 'activeadmin'
 # Plus integrations with:
@@ -96,4 +94,3 @@ gem 'pundit'
 gem 'active_skin'
 
 gem 'active_admin_theme'
->>>>>>> development
