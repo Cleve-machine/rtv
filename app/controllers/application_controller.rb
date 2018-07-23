@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit(:account_update, keys: [:name])
     end
   	def after_sign_in_path_for(resource)
-      "/tree"
+      if resource.is_a?(AdminUser)
+        admin_dashboard_path
+      else
+        "/tree"
+      end
 	end  
 end
