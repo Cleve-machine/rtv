@@ -3,7 +3,6 @@
   "children": [
     {
       "name": "Provide Value Proposition",
-      "children": [],
       "dependsOn": [],
       "duration": 0,
       "goal": 25,
@@ -18,7 +17,6 @@
     },
     {
       "name": "Market Sizing",
-      "children": [],
       "dependsOn": [],
       "goal": 25,
       "duration": 3,
