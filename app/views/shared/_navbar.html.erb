@@ -7,7 +7,7 @@
 
 <nav class="navbar navbar-expand-md navbar-light bg-light">
   <div class="container">
-    <% if current_user.present? %>
+    <% if !current_user.present? %>
       <%= link_to Rails.configuration.application_name, root_path, class: "navbar-brand" %>
     <% else %>
       <%= link_to Rails.configuration.application_name, tree_path, class: "navbar-brand" %>
