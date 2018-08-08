@@ -7,7 +7,7 @@ angular.module('ChartsApp').controller('chartCtrl', function ($scope, $http, bus
         if( data != "null" )
             $scope.treeName = data;
         else
-        	$scope.treeName = "Architecture Tree";
+        	$scope.treeName = "Example Map - NewProduct Limited";
     });
 
     bus.on('updateData', function(data) {
